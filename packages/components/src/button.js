@@ -1,14 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 const StyledText = styled.Text`
-  color: #e00;
+  color: #fff;
 `;
 
-export default function Button({ ...props }) {
+const StyledTouchable = styled.TouchableOpacity`
+  background-color: #000;
+  border-radius: 4px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+`;
+
+export default function Button({ children, textStyle, ...props }) {
+  React.useEffect(() => {
+    console.log('Effect');
+  }, []);
   return (
     <>
-      <StyledText>Hello</StyledText>
+      <StyledTouchable {...props}>
+        <StyledText style={textStyle}>{children}</StyledText>
+      </StyledTouchable>
     </>
   );
 }
